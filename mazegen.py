@@ -2,14 +2,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def mazegen(width, height):
-    # filter out even numbers
+    #filter out even numbers
     width = (width // 2) * 2 + 1
     height = (height // 2) * 2 + 1
 
     shape = (height, width)
-    # Build actual maze
+    #build maze base
     maze = np.zeros(shape, dtype=bool)
-    # Fill borders
+    #build borders
     for i in range(width):
         maze[0, i] = 1
         maze[-1, i] = 1
@@ -19,9 +19,9 @@ def mazegen(width, height):
     #make maze walls
     for i in range(int((width // 2) * (height // 2))):
         x, y = np.random.randint(0, width // 2) * 2, np.random.randint(0, height // 2) * 2
-        maze[x, y] = 1  # make the location a wall
+        maze[x, y] = 1  #make the location a wall
         for j in range(int(5 * (height + width))):
-            neighbors = []  # neighbors to current wall
+            neighbors = []  #neighbors to current wall
             if x > 1:
                 neighbors.append((x - 2, y))
             if x < height - 2:
@@ -30,9 +30,9 @@ def mazegen(width, height):
                 neighbors.append((x, y - 2))
             if y < width - 2:
                 neighbors.append((x, y + 2))
-            if len(neighbors):  # if there are neighbors, select one at random
+            if len(neighbors):  #if there are neighbors, select one at random
                 x_neighbor, y_neighbor = neighbors[np.random.randint(0, len(neighbors))]
-                if maze[x_neighbor, y_neighbor] == 0:  # if it is empty and unvisited
+                if maze[x_neighbor, y_neighbor] == 0:  #if it is empty and unvisited
                     maze[x_neighbor, y_neighbor] = 1
                     maze[x_neighbor + (x - x_neighbor) // 2, y_neighbor + (y - y_neighbor) // 2] = 1
                     x, y = x_neighbor, y_neighbor
@@ -40,7 +40,7 @@ def mazegen(width, height):
     return maze
 
 
-# Selects random start and end points
+#selects random start and end points
 def select_random_start_end(maze):
     free_spaces = np.argwhere(maze == 0)
     start = tuple(free_spaces[np.random.randint(0, len(free_spaces))])
