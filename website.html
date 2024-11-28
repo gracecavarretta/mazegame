@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DSA Final Project</title>
+    <link rel="stylesheet" href="styles/website.css">
+    <style>
+      canvas {
+          display: block;
+          margin: 20px auto;
+          border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="header">
+      Maze Game
+    </p>
+    <div>
+      <button class="buttons genMz" onclick="
+        refreshPage('.genMz');
+    ">Generate a New Maze</button>
+      <button class="buttons dfsBtn" onclick="
+        toggleButton('.dfsBtn');
+      ">Depth First Search (DFS)</button>
+      <button class="buttons bfsBtn" onclick="
+        toggleButton('.bfsBtn');
+      ">Breadth First Search (BFS)</button>
+    </div>
+    <canvas id="mazeCanvas" width="500" height="500"></canvas>
+    <script src="animated.js"></script>
+    <div>
+      The red dot represents the beginning, and the green represents the end!
+    </div>
+    
+    <script src="website.js"></script>
+  </body>
+</html>
