@@ -139,8 +139,8 @@ class Maze {
 // Set up the canvas and initialize the maze
 const canvas = document.getElementById("mazeCanvas");
 const cellSize = 20;
-const rows = 10; // Adjust to desired size
-const cols = 10;
+const rows = 100; // Adjust to desired size
+const cols = 100;
 
 canvas.width = cols * cellSize;
 canvas.height = rows * cellSize;
@@ -153,19 +153,22 @@ const{start, end} = maze.selectRandomStartEnd();
 
 // Animation loop to generate the maze step by step
 function animate() {
-  maze.generateStep();
-  maze.draw(ctx);
+    const stepSize = 100;
+    for (let i = 0; i < stepSize; i++) {
+        maze.generateStep();
+      }
+    maze.draw(ctx);
 
-  // Fills in the start and end points
-  ctx.fillStyle = 'red';
-  ctx.fillRect((start[1]+0.1)*cellSize,(start[0]+0.1)*cellSize,0.85*cellSize,0.85*cellSize);
-  ctx.fillStyle = 'green';
-  ctx.fillRect((end[1]+0.1)*cellSize,(end[0]+0.1)*cellSize,0.85*cellSize,0.85*cellSize);
+    // Fills in the start and end points
+    ctx.fillStyle = 'red';
+    ctx.fillRect((start[1]+0.1)*cellSize,(start[0]+0.1)*cellSize,0.85*cellSize,0.85*cellSize);
+    ctx.fillStyle = 'green';
+    ctx.fillRect((end[1]+0.1)*cellSize,(end[0]+0.1)*cellSize,0.85*cellSize,0.85*cellSize);
 
-  // Animates the generation of the maze
-  if (maze.stack.length > 0) {
-      requestAnimationFrame(animate);
-  }
+    // Animates the generation of the maze
+    if (maze.stack.length > 0) {
+        requestAnimationFrame(animate);
+    }
 }
 
 animate();

@@ -78,7 +78,7 @@ function DFS(selector)
                         neighbor.previous = current;
                     }
                 }
-                setTimeout(animateDFS, 50);
+                setTimeout(animateDFS, 5);
             }
             else
             {
@@ -145,7 +145,7 @@ function BFS(selector)
                     }
                 }
 
-                setTimeout(animateBFS, 50);
+                setTimeout(animateBFS, 5);
             }
             else
             {
