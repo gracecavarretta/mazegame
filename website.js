@@ -53,17 +53,17 @@ function DFS(selector)
         function animateDFS() {
 
             // Allows the speed of the DFS to be scaled
-            const stepsPerFrame = 250;
+            const stepsPerFrame = 5;
             for (let i = 0; i < stepsPerFrame && stack.length > 0; i++) {
                 const current = stack.pop();
 
                 // Marks visited cells with light blue
-                ctx.fillStyle = "lightblue";
-                ctx.fillRect(current.x * maze.cellSize + 5, current.y * maze.cellSize + 5, maze.cellSize - 10, maze.cellSize - 10);
+                ctx.fillStyle = "darkblue";
+                ctx.fillRect(current.x * maze.cellSize + 0.25*maze.cellSize, current.y * maze.cellSize + 0.25*maze.cellSize, maze.cellSize - 0.5*maze.cellSize, maze.cellSize - 0.5*maze.cellSize);
 
                 // Recolors the start with just red
                 ctx.fillStyle = "red";
-                ctx.fillRect(start[1] * maze.cellSize + 2, start[0] * maze.cellSize + 2, maze.cellSize - 4, maze.cellSize - 4);
+                ctx.fillRect(start[1] * maze.cellSize + 0.1*maze.cellSize, start[0] * maze.cellSize + 0.1*maze.cellSize, maze.cellSize - 0.2*maze.cellSize, maze.cellSize - 0.2*maze.cellSize);
 
                 visitedCells.push(current);
 
@@ -137,18 +137,18 @@ function BFS(selector)
         {
 
             // Allows the speed of the BFS to be scaled
-            const stepsPerFrame = 250;
+            const stepsPerFrame = 5;
             for (let i = 0; i < stepsPerFrame && queue.length > 0; i++)
             {
                 const current = queue.shift();
 
                 // Marks visited cells with light green
-                ctx.fillStyle = "lightgreen";
-                ctx.fillRect(current.x * maze.cellSize + 5, current.y * maze.cellSize + 5, maze.cellSize - 10, maze.cellSize - 10);
+                ctx.fillStyle = "darkgreen";
+                ctx.fillRect(current.x * maze.cellSize + 0.25*maze.cellSize, current.y * maze.cellSize + 0.25*maze.cellSize, maze.cellSize - 0.5*maze.cellSize, maze.cellSize - 0.5*maze.cellSize);
 
                 // Recolors the start with just red
                 ctx.fillStyle = "red";
-                ctx.fillRect(start[1] * maze.cellSize + 2, start[0] * maze.cellSize + 2, maze.cellSize - 4, maze.cellSize - 4);
+                ctx.fillRect(start[1] * maze.cellSize + 0.1*maze.cellSize, start[0] * maze.cellSize + 0.1*maze.cellSize, maze.cellSize - 0.2*maze.cellSize, maze.cellSize - 0.2*maze.cellSize);
 
                 visitedCells.push(current);
 
@@ -182,7 +182,6 @@ function BFS(selector)
                 }
             }
 
-
             if (queue.length > 0) {
                 requestAnimationFrame(animateBFS);
             } else {
@@ -199,7 +198,7 @@ function cleanupVisited(visitedCells, ctx, preservePath)
     // Clears the markers
     for (const cell of visitedCells)
     {
-        ctx.clearRect(cell.x * maze.cellSize + 5, cell.y * maze.cellSize + 5, maze.cellSize - 10, maze.cellSize - 10);
+        ctx.clearRect(cell.x * maze.cellSize + 0.25*maze.cellSize, cell.y * maze.cellSize + 0.25*maze.cellSize, maze.cellSize - 0.5*maze.cellSize, maze.cellSize - 0.5*maze.cellSize);
     }
 
     clearPath(maze.grid[end[0]][end[1]], ctx)
@@ -212,10 +211,10 @@ function cleanupVisited(visitedCells, ctx, preservePath)
 
     // Recolors the start and the end
     ctx.fillStyle = "red";
-    ctx.fillRect(start[1] * maze.cellSize + 2, start[0] * maze.cellSize + 2, maze.cellSize - 4, maze.cellSize - 4);
+    ctx.fillRect(start[1] * maze.cellSize + 0.1*maze.cellSize, start[0] * maze.cellSize + 0.1*maze.cellSize, maze.cellSize - 0.2*maze.cellSize, maze.cellSize - 0.2*maze.cellSize);
 
     ctx.fillStyle = "green";
-    ctx.fillRect(end[1] * maze.cellSize + 2, end[0] * maze.cellSize + 2, maze.cellSize - 4, maze.cellSize - 4);
+    ctx.fillRect(end[1] * maze.cellSize + 0.1*maze.cellSize, end[0] * maze.cellSize + 0.1*maze.cellSize, maze.cellSize - 0.2*maze.cellSize, maze.cellSize - 0.2*maze.cellSize);
 }
 
 // Function to get all of the neighbors which can be reached by the current node
