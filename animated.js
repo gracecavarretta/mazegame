@@ -1,4 +1,5 @@
 class Maze {
+    // Creating a blank grid of the desired size
     constructor(rows, cols, cellSize) {
         this.rows = rows;
         this.cols = cols;
@@ -9,6 +10,7 @@ class Maze {
         this.initGrid();
     }
 
+    // Randomly selects a starting node and an ending node on the grid
     selectRandomStartEnd() {
         // Find all free spaces in the maze (value 0)
         let freeSpaces = [];
@@ -34,6 +36,7 @@ class Maze {
         return {start, end};
     }
 
+    // Adds walls to each cell within the grid
     initGrid() {
         // Initialize the grid with cells
         for (let row = 0; row < this.rows; row++) {
@@ -51,6 +54,7 @@ class Maze {
         this.current.visited = true;
     }
 
+    // Draws the grid 
     draw(ctx) {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         ctx.lineWidth = 2;
@@ -76,11 +80,13 @@ class Maze {
         const neighbors = [];
         const {x, y} = cell;
 
+        // Logic to find all existing, unvisited neighbors
         if (y > 0 && !this.grid[y - 1][x].visited) neighbors.push(this.grid[y - 1][x]); // Top
         if (x < this.cols - 1 && !this.grid[y][x + 1].visited) neighbors.push(this.grid[y][x + 1]); // Right
         if (y < this.rows - 1 && !this.grid[y + 1][x].visited) neighbors.push(this.grid[y + 1][x]); // Bottom
         if (x > 0 && !this.grid[y][x - 1].visited) neighbors.push(this.grid[y][x - 1]); // Left
 
+        // Randomly selects and returns one of the neighbors (otherwise returns null)
         return neighbors.length > 0
             ? neighbors[Math.floor(Math.random() * neighbors.length)]
             : null;
@@ -91,6 +97,7 @@ class Maze {
         const dx = cell1.x - cell2.x;
         const dy = cell1.y - cell2.y;
 
+        // Logic if the cells are next to eachother horizontally
         if (dx === 1) {
             cell1.walls.left = false;
             cell2.walls.right = false;
@@ -99,6 +106,7 @@ class Maze {
             cell2.walls.left = false;
         }
 
+        // Logic if the cells are next to eachother vertically
         if (dy === 1) {
             cell1.walls.top = false;
             cell2.walls.bottom = false;
@@ -131,26 +139,30 @@ class Maze {
 // Set up the canvas and initialize the maze
 const canvas = document.getElementById("mazeCanvas");
 const cellSize = 20;
-const rows = 100; // Adjust to desired size
-const cols = 100;
+const rows = 10; // Adjust to desired size
+const cols = 10;
 
 canvas.width = cols * cellSize;
 canvas.height = rows * cellSize;
 
 const ctx = canvas.getContext("2d");
+
+// Initializes the maze and sets the start and end points
 const maze = new Maze(rows, cols, cellSize);
 const{start, end} = maze.selectRandomStartEnd();
+
 // Animation loop to generate the maze step by step
 function animate() {
   maze.generateStep();
   maze.draw(ctx);
 
+  // Fills in the start and end points
   ctx.fillStyle = 'red';
   ctx.fillRect((start[1]+0.1)*cellSize,(start[0]+0.1)*cellSize,0.85*cellSize,0.85*cellSize);
-
   ctx.fillStyle = 'green';
   ctx.fillRect((end[1]+0.1)*cellSize,(end[0]+0.1)*cellSize,0.85*cellSize,0.85*cellSize);
 
+  // Animates the generation of the maze
   if (maze.stack.length > 0) {
       requestAnimationFrame(animate);
   }
