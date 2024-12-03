@@ -30,6 +30,7 @@ function DFS(selector)
 {
     const button = document.querySelector(selector);
     const timeDisplay = document.getElementById("dfsTime");
+    const numVisited = document.getElementById("dfsVisited");
 
     button.addEventListener('click', () =>
     {
@@ -78,6 +79,8 @@ function DFS(selector)
                     const endTime = performance.now();
                     const elapsedTime = (endTime - startTime)/1000;
                     timeDisplay.textContent = `${elapsedTime.toFixed(4)} seconds`;
+
+                    numVisited.textContent = `${visitedCells.length} nodes`;
                     return;
                 }
 
@@ -110,6 +113,7 @@ function BFS(selector)
 {
     const button = document.querySelector(selector);
     const timeDisplay = document.getElementById("bfsTime");
+    const numVisited = document.getElementById("bfsVisited");
 
     button.addEventListener('click', () =>
     {
@@ -160,6 +164,8 @@ function BFS(selector)
                     const endTime = performance.now();
                     const elapsedTime = (endTime - startTime)/1000;
                     timeDisplay.textContent = `${elapsedTime.toFixed(4)} seconds`;
+
+                    numVisited.textContent = `${visitedCells.length} nodes`;
                     return;
                 }
 
