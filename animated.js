@@ -139,8 +139,8 @@ class Maze {
 // Set up the canvas and initialize the maze
 const canvas = document.getElementById("mazeCanvas");
 const cellSize = 20;
-const rows = 100; // Adjust to desired size
-const cols = 100;
+const rows = 200; // Adjust to desired size
+const cols = 500;
 
 canvas.width = cols * cellSize;
 canvas.height = rows * cellSize;
@@ -153,7 +153,7 @@ const{start, end} = maze.selectRandomStartEnd();
 
 // Animation loop to generate the maze step by step
 function animate() {
-    const stepSize = 500;
+    const stepSize = 10000;
     for (let i = 0; i < stepSize; i++) {
         maze.generateStep();
       }
