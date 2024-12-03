@@ -3,13 +3,23 @@ body {
 }
 
 .header {
-  font-size: 45px;
+  font-size: 70px;
   font-weight: bold;
   font-family: 'Times New Roman', Times, serif;
 }
 
+.subheading {
+  font-size: 45px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.text {
+  font-size: 30px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
 .buttons {
-  font-size: 15px;
+  font-size: 25px;
   background-color: rgb(230, 230, 230);
   border: none;
   margin-right: 25px;
