@@ -29,6 +29,8 @@ function refreshPage(selector)
 function DFS(selector)
 {
     const button = document.querySelector(selector);
+    const timeDisplay = document.getElementById("dfsTime");
+
     button.addEventListener('click', () =>
     {
         // Stack for DFS
@@ -42,6 +44,9 @@ function DFS(selector)
         visited.add(maze.grid[start[0]][start[1]]);
 
         const ctx = canvas.getContext("2d");
+
+        // Gets the starting time
+        const startTime = performance.now();
 
         // Animating the search
         function animateDFS() {
@@ -64,6 +69,12 @@ function DFS(selector)
                     drawPath(maze.grid[end[0]][end[1]], ctx);
                     // Removes the visited markers
                     cleanupVisited(visitedCells, ctx, true);
+                    
+
+                    // Ending time
+                    const endTime = performance.now();
+                    const elapsedTime = (endTime - startTime)/1000;
+                    timeDisplay.textContent = `${elapsedTime.toFixed(4)} seconds`;
                     return;
                 }
 
@@ -78,11 +89,11 @@ function DFS(selector)
                         neighbor.previous = current;
                     }
                 }
-                setTimeout(animateDFS, 5);
+                setTimeout(animateDFS, 1);
             }
             else
             {
-                //Some kind of marker that DFS was completed
+                // The maze is unsolvable
             }
         }
         animateDFS();
@@ -93,6 +104,8 @@ function DFS(selector)
 function BFS(selector)
 {
     const button = document.querySelector(selector);
+    const timeDisplay = document.getElementById("bfsTime");
+
     button.addEventListener('click', () =>
     {
         // Queue for BFS
@@ -106,6 +119,9 @@ function BFS(selector)
         visited.add(maze.grid[start[0]][start[1]]);
 
         const ctx = canvas.getContext("2d");
+
+         // Gets the starting time
+         const startTime = performance.now();
 
         // Animates the search
         function animateBFS()
@@ -130,6 +146,12 @@ function BFS(selector)
                     drawPath(maze.grid[end[0]][end[1]], ctx);
                     // Removes the visited markers
                     cleanupVisited(visitedCells, ctx, true);
+
+
+                    // Ending time
+                    const endTime = performance.now();
+                    const elapsedTime = (endTime - startTime)/1000;
+                    timeDisplay.textContent = `${elapsedTime.toFixed(4)} seconds`;
                     return;
                 }
 
@@ -145,11 +167,11 @@ function BFS(selector)
                     }
                 }
 
-                setTimeout(animateBFS, 5);
+                setTimeout(animateBFS, 1);
             }
             else
             {
-                //Output something to show BFS was completed
+                // The maze is unsolvable
             }
         }
         animateBFS();

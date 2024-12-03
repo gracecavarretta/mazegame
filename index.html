@@ -18,6 +18,11 @@
     <p class="header">
       Maze Game
     </p>
+
+    <div>
+      The red dot represents the beginning, and the green represents the end!
+    </div>
+
     <div>
       <button class="buttons genMz" onclick="refreshPage('.genMz');
     ">Generate a New Maze</button>
@@ -26,11 +31,15 @@
       <button class="buttons bfsBtn" onclick="BFS('.bfsBtn')"
       >Breadth First Search (BFS)</button>
     </div>
+
+    <div>
+      <p>DFS Time: <span id="dfsTime">Not started</span></p>
+      <p>BFS Time: <span id="bfsTime">Not started</span></p>
+    </div>
+
     <canvas id="mazeCanvas" width="500" height="500"></canvas>
     <script src="animated.js"></script>
-    <div>
-      The red dot represents the beginning, and the green represents the end!
-    </div>
+  
     
     <script src="website.js"></script>
   </body>
