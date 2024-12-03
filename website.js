@@ -50,7 +50,10 @@ function DFS(selector)
 
         // Animating the search
         function animateDFS() {
-            if (stack.length > 0) {
+
+            // Allows the speed of the DFS to be scaled
+            const stepsPerFrame = 5;
+            for (let i = 0; i < stepsPerFrame && stack.length > 0; i++) {
                 const current = stack.pop();
 
                 // Marks visited cells with light blue
@@ -89,10 +92,12 @@ function DFS(selector)
                         neighbor.previous = current;
                     }
                 }
-                setTimeout(animateDFS, 1);
             }
-            else
-            {
+
+
+            if (stack.length > 0) {
+                requestAnimationFrame(animateDFS);
+            } else {
                 // The maze is unsolvable
             }
         }
@@ -126,7 +131,10 @@ function BFS(selector)
         // Animates the search
         function animateBFS()
         {
-            if (queue.length > 0)
+
+            // Allows the speed of the BFS to be scaled
+            const stepsPerFrame = 5;
+            for (let i = 0; i < stepsPerFrame && queue.length > 0; i++)
             {
                 const current = queue.shift();
 
@@ -166,11 +174,12 @@ function BFS(selector)
                         neighbor.previous = current;
                     }
                 }
-
-                setTimeout(animateBFS, 1);
             }
-            else
-            {
+
+
+            if (queue.length > 0) {
+                requestAnimationFrame(animateBFS);
+            } else {
                 // The maze is unsolvable
             }
         }

@@ -153,7 +153,7 @@ const{start, end} = maze.selectRandomStartEnd();
 
 // Animation loop to generate the maze step by step
 function animate() {
-    const stepSize = 100;
+    const stepSize = 500;
     for (let i = 0; i < stepSize; i++) {
         maze.generateStep();
       }
