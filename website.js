@@ -58,12 +58,12 @@ function DFS(selector)
                 const current = stack.pop();
 
                 // Marks visited cells with light blue
-                ctx.fillStyle = "darkblue";
+                ctx.fillStyle = "lightblue";
                 ctx.fillRect(current.x * maze.cellSize + 0.25*maze.cellSize, current.y * maze.cellSize + 0.25*maze.cellSize, maze.cellSize - 0.5*maze.cellSize, maze.cellSize - 0.5*maze.cellSize);
 
                 // Recolors the start with just red
                 ctx.fillStyle = "red";
-                ctx.fillRect(start[1] * maze.cellSize + 0.1*maze.cellSize, start[0] * maze.cellSize + 0.1*maze.cellSize, maze.cellSize - 0.2*maze.cellSize, maze.cellSize - 0.2*maze.cellSize);
+                ctx.fillRect(start[1] * maze.cellSize + 0.1*maze.cellSize, start[0] * maze.cellSize + 0.1*maze.cellSize, maze.cellSize - 0.2*maze.cellSize, maze.cellSize - 0.2);
 
                 visitedCells.push(current);
 
@@ -143,7 +143,7 @@ function BFS(selector)
                 const current = queue.shift();
 
                 // Marks visited cells with light green
-                ctx.fillStyle = "darkgreen";
+                ctx.fillStyle = "lightgreen";
                 ctx.fillRect(current.x * maze.cellSize + 0.25*maze.cellSize, current.y * maze.cellSize + 0.25*maze.cellSize, maze.cellSize - 0.5*maze.cellSize, maze.cellSize - 0.5*maze.cellSize);
 
                 // Recolors the start with just red
