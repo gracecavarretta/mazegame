@@ -53,12 +53,12 @@ function DFS(selector)
         function animateDFS() {
 
             // Allows the speed of the DFS to be scaled
-            const stepsPerFrame = 5;
+            const stepsPerFrame = 250;
             for (let i = 0; i < stepsPerFrame && stack.length > 0; i++) {
                 const current = stack.pop();
 
-                // Marks visited cells with light blue
-                ctx.fillStyle = "lightblue";
+                // Marks visited cells with dark blue
+                ctx.fillStyle = "darkblue";
                 ctx.fillRect(current.x * maze.cellSize + 0.25*maze.cellSize, current.y * maze.cellSize + 0.25*maze.cellSize, maze.cellSize - 0.5*maze.cellSize, maze.cellSize - 0.5*maze.cellSize);
 
                 // Recolors the start with just red
@@ -137,13 +137,13 @@ function BFS(selector)
         {
 
             // Allows the speed of the BFS to be scaled
-            const stepsPerFrame = 5;
+            const stepsPerFrame = 250;
             for (let i = 0; i < stepsPerFrame && queue.length > 0; i++)
             {
                 const current = queue.shift();
 
-                // Marks visited cells with light green
-                ctx.fillStyle = "lightgreen";
+                // Marks visited cells with dark green
+                ctx.fillStyle = "darkgreen";
                 ctx.fillRect(current.x * maze.cellSize + 0.25*maze.cellSize, current.y * maze.cellSize + 0.25*maze.cellSize, maze.cellSize - 0.5*maze.cellSize, maze.cellSize - 0.5*maze.cellSize);
 
                 // Recolors the start with just red
