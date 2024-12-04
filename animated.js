@@ -139,8 +139,8 @@ class Maze {
 // Set up the canvas and initialize the maze
 const canvas = document.getElementById("mazeCanvas");
 const cellSize = 20;
-const rows = 100; // Adjust to desired size
-const cols = 100;
+const rows = 200; // Adjust to desired size
+const cols = 500;
 
 canvas.width = cols * cellSize;
 canvas.height = rows * cellSize;
