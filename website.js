@@ -53,7 +53,7 @@ function DFS(selector)
         function animateDFS() {
 
             // Allows the speed of the DFS to be scaled
-            const stepsPerFrame = 5;
+            const stepsPerFrame = 250;
             for (let i = 0; i < stepsPerFrame && stack.length > 0; i++) {
                 const current = stack.pop();
 
@@ -143,7 +143,7 @@ function BFS(selector)
         {
 
             // Allows the speed of the BFS to be scaled
-            const stepsPerFrame = 5;
+            const stepsPerFrame = 250;
             for (let i = 0; i < stepsPerFrame && queue.length > 0; i++)
             {
                 const current = queue.shift();
