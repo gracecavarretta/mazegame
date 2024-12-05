@@ -28,8 +28,8 @@
     </div>
 
     <div>
-      <button class="buttons genMz" onclick="refreshPage('.genMz');
-    ">Generate a New Maze</button>
+      <button class="buttons genMz" onclick="refreshPage('.genMz');"
+      >Generate a New Maze</button>
       <button class="buttons dfsBtn" onclick="DFS('.dfsBtn')"
       >Depth First Search (DFS)</button>
       <button class="buttons bfsBtn" onclick="BFS('.bfsBtn')"
@@ -37,8 +37,7 @@
     </div>
 
     <div>
-      <p class="text">DFS Time: <span id="dfsTime">Not started</span>  |  Nodes Visited: <span id="dfsVisited">Not started</span></p>
-      <p class="text">BFS Time: <span id="bfsTime">Not started</span>  |  Nodes Visited: <span id="bfsVisited">Not started</span></p>
+      <p class="text">DFS Time: <span id="dfsTime">Not started</span>  |  Nodes Visited: <span id="dfsVisited">Not started</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BFS Time: <span id="bfsTime">Not started</span>  |  Nodes Visited: <span id="bfsVisited">Not started</span></p>
     </div>
 
     <canvas id="mazeCanvas" width="500" height="500"></canvas>

@@ -1,21 +1,28 @@
 body {
   text-align: center;
+  margin: 0;
 }
 
 .header {
-  font-size: 70px;
+  font-size: 80px;
   font-weight: bold;
   font-family: 'Times New Roman', Times, serif;
+  margin-top: 10px; 
+  margin-bottom: 10px; 
 }
 
 .subheading {
   font-size: 45px;
   font-family: 'Times New Roman', Times, serif;
+  margin-top: 10px; 
+  margin-bottom: 10px; 
 }
 
 .text {
   font-size: 30px;
   font-family: 'Times New Roman', Times, serif;
+  margin-top: 10px; 
+  margin-bottom: 10px; 
 }
 
 .buttons {
@@ -27,6 +34,8 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 10px; 
+  margin-bottom: 10px; 
 }
 
 .buttons:hover {

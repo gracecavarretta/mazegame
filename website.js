@@ -53,7 +53,7 @@ function DFS(selector)
         function animateDFS() {
 
             // Allows the speed of the DFS to be scaled
-            const stepsPerFrame = 250;
+            const stepsPerFrame = 5;
             for (let i = 0; i < stepsPerFrame && stack.length > 0; i++) {
                 const current = stack.pop();
 
@@ -66,6 +66,12 @@ function DFS(selector)
                 ctx.fillRect(start[1] * maze.cellSize + 0.1*maze.cellSize, start[0] * maze.cellSize + 0.1*maze.cellSize, maze.cellSize - 0.2*maze.cellSize, maze.cellSize - 0.2);
 
                 visitedCells.push(current);
+
+                const endTime = performance.now();
+                const elapsedTime = (endTime - startTime)/1000;
+                timeDisplay.textContent = `${elapsedTime.toFixed(4)} seconds`;
+
+                numVisited.textContent = `${visitedCells.length} nodes`;
 
                 if (current === maze.grid[end[0]][end[1]])
                 {
@@ -137,7 +143,7 @@ function BFS(selector)
         {
 
             // Allows the speed of the BFS to be scaled
-            const stepsPerFrame = 250;
+            const stepsPerFrame = 5;
             for (let i = 0; i < stepsPerFrame && queue.length > 0; i++)
             {
                 const current = queue.shift();
@@ -151,6 +157,13 @@ function BFS(selector)
                 ctx.fillRect(start[1] * maze.cellSize + 0.1*maze.cellSize, start[0] * maze.cellSize + 0.1*maze.cellSize, maze.cellSize - 0.2*maze.cellSize, maze.cellSize - 0.2*maze.cellSize);
 
                 visitedCells.push(current);
+
+                const endTime = performance.now();
+                const elapsedTime = (endTime - startTime)/1000;
+                timeDisplay.textContent = `${elapsedTime.toFixed(4)} seconds`;
+
+                numVisited.textContent = `${visitedCells.length} nodes`;
+
 
                 if (current === maze.grid[end[0]][end[1]])
                 {
